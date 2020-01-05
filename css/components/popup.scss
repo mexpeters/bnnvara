@@ -1,0 +1,181 @@
+.popup-box {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1337;
+    background-color: $background-color-base;
+
+    &.state-open { display: block; }
+
+    &.state-story {
+
+        .inner { text-align: center; }
+
+        .close {
+            position: absolute;
+            top: ($gutter-base / 3); right: ($gutter-base / 3);
+        }
+    }
+
+    &.state-tips {
+
+        &.state-open {
+            @media (min-width: 750px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .inner {
+            padding-left: 0;
+            padding-right: 0;
+            overflow: hidden;
+            overflow-y: scroll;
+            height: 100vh;
+
+            @media (min-width: 750px) {
+                background-color: $background-color-base;
+                width: 80vw;
+                max-width: ($gutter-base*35);
+                max-height: 70vh;
+                flex: 0 0 auto;
+                padding-top: 0;
+            }  
+        }
+
+        .list {
+            list-style-type: none;
+            padding-left: 0;
+
+            .el {
+                padding: ($gutter-base) 0;
+
+                @media (min-width: 750px) {
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                &.state-alt {
+                    @media (min-width: 750px) {
+                        flex-direction: row-reverse;
+                    }
+
+                    .text {
+                        @media (min-width: 750px) {
+                            margin-left: ($gutter-base * 1.5);
+                            margin-right: auto;
+                        }
+                    }
+                }
+
+                .media {
+                    @media (min-width: 750px) {
+                        flex: 0 0 9.6875rem;
+
+                        img {
+                            max-height: 10rem;
+                        }
+                    }
+                }
+
+                .text {
+                    flex: 1 1 auto;
+                    margin-right: ($gutter-base * 1.5);
+
+                    .highlight {
+                        font-weight: $font-weight-bold;
+                    }
+                }
+            }
+        }
+    }
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        padding-left: ($gutter-base/2);
+        padding-right: ($gutter-base/2);
+
+        @media (min-width: 1000px) {
+            padding: ($gutter-base/2) ($gutter-base);
+        }
+
+        .title { margin-bottom: 0; }
+    }
+
+    .tips {
+        padding-left: ($gutter-base/2);
+        padding-right: ($gutter-base/2);
+
+        @media (min-width: 1000px) {
+            padding-left: ($gutter-base);
+            padding-right: ($gutter-base);
+        }
+
+        &:nth-child(even) {
+            background-color: transparentize($text-color-base, .90);
+        }
+    }
+
+    .close {
+        height: ($gutter-base);
+        width: ($gutter-base);
+        border-radius: 50%;
+        background-color: $primary-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        @media (min-width: 1050px) { cursor: pointer; }
+
+        .icon {
+            color: $text-color-white;
+            flex: 1 1 auto;
+        }
+    }
+
+    @media (min-width: 750px) { background-color: $text-color-light; }
+
+    .inner {
+        @include wrap;
+        @include section;
+    }
+
+    .content-box {
+        position: relative;
+
+        @media (min-width: 750px) {
+            background-color: $background-color-base;
+            display: inline-block;
+        }
+    }
+
+    .media {
+        img {
+            display: block;
+            width: 100%;
+
+            @media (min-width: 750px) { max-width: ($gutter-base * 20); }
+        }
+    }
+
+    .content {
+        margin-top: ($gutter-base);
+
+        @media (min-width: 750px) {
+            margin-top: auto;
+            background-color: $background-color-base;
+            max-width: ($gutter-base * 20);
+            border: ($border-width-base * 3) solid rgba(0,0,0, .7);
+            padding: ($gutter-base / 2);
+        }
+
+        .text {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+.intro-block {
+    @include section;
+
+    .inner {
+        @include wrap;
+        text-align: center;
+    }
+    
+    .block-title {
+        line-height: $line-height-small;
+        margin-bottom: ($gutter-base/2);
+
+        &.state-alt {
+            font-style: italic;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 1000px) { font-size: $heading-size-big; }
+    }
+
+    .text {
+        max-width: ($gutter-base*30);
+        margin-left: auto;
+        margin-right: auto;
+
+        @media (min-width: 1000px) { font-size: $heading-size-small; }
+    }
+
+    .scroll-to {
+        background-color: $primary-color;
+        width: ($gutter-base*1.833333333);
+        height: ($gutter-base*1.833333333);
+        display: inline-block;
+        border-radius: 50%;
+    }
+}

@@ -1,0 +1,70 @@
+/* Automated rem sizes */
+@function rem-calc($size) {
+  $rem-size: ($size/16);
+  @return #{$rem-size}rem;
+}
+
+/* Font settings */
+$font-family-base:   'Open Sans', sans-serif; 
+//$font-family-base:    "Font Face Family Name", sans-serif;
+
+$font-size-small:      rem-calc(14);
+$font-size-base:       rem-calc(16);
+$font-size-medium:     rem-calc(18);
+$font-size-big:        rem-calc(22);
+
+$heading-size-tiny:    rem-calc(25);
+$heading-size-small:   rem-calc(28);
+$heading-size-big:     rem-calc(50);
+
+$line-height-base:    1.5;
+$line-height-small:   1.25;
+
+$font-weight-normal:  400;
+$font-weight-semi:    600;
+$font-weight-bold:    700;
+$font-weight-base:    $font-weight-normal;
+
+/* Size settings */
+$max-width-base:      rem-calc(1280);
+$gutter-base:         1.875rem; // 30px by default
+
+$border-radius-base:  rem-calc(4);
+$border-width-base:   rem-calc(1);
+
+/* Z-index settings */
+$zindex-menu:         1337;
+$zindex-scale:        10;
+$zindex-modal-bg:     (($zindex-menu)+($zindex-scale));
+$zindex-modal:        (($zindex-modal-bg)+($zindex-scale));
+
+/* Color settings */
+$text-color-base:       #1A1A1A;
+$text-color-medium:     transparentize($text-color-base, .35);
+$text-color-light:      transparentize($text-color-base, .50);
+
+$text-color-white:      #FFF;
+
+$background-color-base:         #FFF;
+$background-color-placeholder:  transparentize($text-color-base, .90);
+
+$border-color-base:     #E9E9E9;
+$border-radius-base:    0.25rem; // 4px by default
+$border-width-base:     0.0625rem; // 1px by default
+
+$primary-color:         #EA0000;
+$primary-hover-color:   darken($primary-color, 20%);
+
+$positive-color:        #A6E680;
+$negative-color:        #E68B80;
+
+/* LazyLoad settings */
+@mixin aspect-ratio-container($width, $height) {
+  position: relative;
+  padding-bottom: (($height / $width) * 100%);
+
+  img {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+  }
+}

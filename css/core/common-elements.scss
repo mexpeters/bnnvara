@@ -1,0 +1,130 @@
+::selection {background: transparentize($primary-color, .80);}
+
+body {
+  background-color: $background-color-base;
+  position: relative;
+}
+
+@mixin section {
+  padding-top: ($gutter-base);
+  padding-bottom: ($gutter-base);
+
+  @media (min-width: 1000px) {
+    padding-top: ($gutter-base*2);
+    padding-bottom: ($gutter-base*2);
+  }
+
+  @extend .component-section;
+}
+  .component-section + .component-section {padding-top: 0;}
+  //.component-section:not(.state-sub) + .component-section:not(.state-sub) {padding-top: 0;}
+
+@mixin wrap {
+  padding-left: ($gutter-base/2);
+  padding-right: ($gutter-base/2);
+  max-width: $max-width-base;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 1000px) {
+    padding-left: ($gutter-base);
+    padding-right: ($gutter-base);
+  }
+}
+
+// If you don't end up using the widget-offset just remove the mixin
+@mixin widget-offset {
+  margin-top: ($gutter-base);
+
+  &:first-child {margin-top: 0;}
+
+  @media (min-width: 1000px) {
+    margin-top: ($gutter-base*2);
+
+    &:first-child {margin-top: 0;}
+  }
+}
+
+// If you don't end up using this primary-section set-up just remove all of its code
+.primary-section {
+
+  .main-content {
+    // Keep or remove this logic
+    & > *:last-child {margin-bottom: 0;}
+
+    @media (min-width: 1000px) {
+      // Floats or flex-box settings here
+
+      &:only-child, &:last-child {
+        // If back-end properly does NOT render the sidebar what do you want?
+          // 100% wide?
+          // centered?
+        // Define it here with either the &:only-child, &:last-child
+          // Dot NOT use both, really make a choice here and remove the other
+      }
+    }
+
+    // Keep or remove this logic (for a mobile offset)
+    & + .sidebar:not(:empty) {
+      margin-top: ($gutter-base);
+
+      @media (min-width: 1000px) {
+        margin-top: 0;
+      }
+    }
+
+    & > picture {
+      // Include the reservation of the (retina) image dimensions, preventing intrinsic ratios the glitch
+      @include aspect-ratio-container(720, 410);
+      background: $background-color-placeholder;
+
+      @media (min-width: 401px) {
+        @include aspect-ratio-container(1000, 560);
+      }
+      @media (min-width: 750px) {
+        @include aspect-ratio-container(2000, 1130);
+      }
+      @media (min-width: 1000px) {
+        @include aspect-ratio-container(1310, 736);
+      }
+      // End of aspect-ratio reservations
+    }
+  }
+
+  .sidebar {
+    @media (min-width: 1000px) {
+      // Floats or flex-box settings here
+    }
+
+    // Keep or remove this logic
+    &:empty {display: none;}
+  }
+}
+
+hr {
+  height: 0;
+  border-width: $border-width-base 0 0;
+  border-style: solid;
+  border-color: $border-color-base;
+  margin-top: 0;
+  margin-bottom: $gutter-base;
+}
+
+.flex-img img {
+  width: 100%;
+  display: block;
+}
+
+.button-box {
+  @include section;
+  @include wrap;
+  text-align: center;
+  
+  .btn {
+    width: 100%;
+
+    @media (min-width: 1000px) {
+      max-width: ($gutter-base * 30);
+    }
+  }
+}

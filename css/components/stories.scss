@@ -1,0 +1,77 @@
+.stories-block {
+
+    &.state-personal .story {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .media { flex: 1 1 auto; }
+    }
+    
+    .inner {
+        @include wrap;
+        display: flex;
+        overflow: hidden;
+        overflow-x: scroll;
+
+        @media (min-width: 750px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    .story {
+        display: block;
+        text-decoration: none;
+        flex: 0 0 60%;
+        
+        @media (min-width: 750px) {
+            flex-basis: 50%;
+            margin-bottom: ($gutter-base);
+        }
+
+        @media (min-width: 1000px) { flex-basis: 33%; }
+
+        @media (min-width: 1050px) {
+            &:hover {
+                img { transform: scale(1.05); }
+                .text { opacity: 1; }
+            }
+        }
+
+        .inner-wrap { position: relative; }
+
+        .media {
+            padding: 0 ($gutter-base / 3);
+
+            img {
+                width: 100%;
+                transition: all .3s ease-out;
+            }
+        }
+
+
+        .text {
+            transition: opacity .3s ease-out;
+            position: absolute;
+            background-color: $text-color-light;
+            color: $text-color-white;
+            bottom: ($gutter-base / 3); left: ($gutter-base / 3);
+            width: 100%;
+            padding-bottom: ($gutter-base / 2);
+
+            @media (min-width: 1050px) { opacity: 0; }
+        }
+
+        .label {
+            margin-bottom: 0;
+            padding-left: ($gutter-base / 2);
+            font-size: $heading-size-tiny;
+        }
+
+        .value {
+            margin-bottom: 0;
+            padding-left: ($gutter-base / 2);
+            font-size: $font-size-big;
+        }
+    }
+}

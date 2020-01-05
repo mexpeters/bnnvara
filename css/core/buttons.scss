@@ -1,0 +1,36 @@
+.btn {
+  cursor: pointer;
+  transition: color .3s ease-out, background-color .3s ease-out, border-color .3s ease-out;
+  color: $text-color-white;
+  background-color: $primary-color;
+  border-radius: $border-radius-base;
+  border: ($border-width-base) solid transparent;
+  padding: ($gutter-base / 3) ($gutter-base / 2 );
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+
+
+  &.state-secondary {}
+
+  @media(min-width: 1050px) {
+    &:hover, &:focus {
+      background-color: $background-color-base;
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+}
+
+.btn-cont {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: -($gutter-base/4);
+  margin-top: -($gutter-base/4);
+
+  .btn {
+    flex: 1 1 auto;
+    margin-left: ($gutter-base/4);
+    margin-top: ($gutter-base/4);
+  }
+}
